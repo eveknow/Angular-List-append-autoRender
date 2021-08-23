@@ -6,9 +6,9 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 @Component({
   selector: 'ngfor-example',
   template: `<h4>NgFor</h4>
-<ul>
+<ul (mouseenter)="mouseMove()">
   <li *ngFor="let person of people; let i = index">
-    {{ i + 1 }} - {{ person.name }}
+    {{ i + 1 }} - {{ getName(person)}}
   </li>
   <div (click)="test()" >Action </div>
 </ul>
@@ -37,6 +37,16 @@ class NgForExampleComponent {
   test(){
     this.people.push({"name": "thanhtk"});
   }
+
+  getName(object:any){
+    console.log("get Name Function ");
+    return object["name"];
+  }
+
+  mouseMove(){
+    console.log("Mouse move ");
+  }
+
 }
 
 
